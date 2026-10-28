@@ -17,10 +17,7 @@ targets:
       - Sources/Jev
     dependencies:
       - target: JevKeyboard
-    entitlements:
-      properties:
-        com.apple.security.application-groups:
-          - group.com.jev.ios
+    entitlements: Sources/Jev.entitlements
     info:
       path: Sources/Jev/Info.plist
       properties:
@@ -40,11 +37,7 @@ targets:
     platform: iOS
     sources:
       - Sources/JevKeyboard
-      - Sources/Jev/Shared.swift
-    entitlements:
-      properties:
-        com.apple.security.application-groups:
-          - group.com.jev.ios
+    entitlements: Sources/Jev.entitlements
     info:
       path: Sources/JevKeyboard/Info.plist
       properties:
