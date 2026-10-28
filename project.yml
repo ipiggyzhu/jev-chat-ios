@@ -17,7 +17,8 @@ targets:
       - Sources/Jev
     dependencies:
       - target: JevKeyboard
-    entitlements: Sources/Jev.entitlements
+    entitlements:
+      path: Sources/Jev.entitlements
     info:
       path: Sources/Jev/Info.plist
       properties:
@@ -37,7 +38,8 @@ targets:
     platform: iOS
     sources:
       - Sources/JevKeyboard
-    entitlements: Sources/Jev.entitlements
+    entitlements:
+      path: Sources/Jev.entitlements
     info:
       path: Sources/JevKeyboard/Info.plist
       properties:
