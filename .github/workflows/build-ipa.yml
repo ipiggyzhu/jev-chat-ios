@@ -5,6 +5,9 @@ on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: macos-15
@@ -42,3 +45,13 @@ jobs:
         with:
           name: jev-unsigned-ipa
           path: Jev-unsigned.ipa
+
+      - name: Publish to Releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="build-${{ github.run_number }}"
+          gh release create "$TAG" Jev-unsigned.ipa \
+            --title "Jev iOS $TAG（无签名 IPA）" \
+            --notes "CI 自动构建 #${{ github.run_number }}，提交 ${{ github.sha }}。无签名 IPA，用 AltStore / SideStore 以自己的 Apple ID 重签安装。" \
+          || gh release upload "$TAG" Jev-unsigned.ipa --clobber
